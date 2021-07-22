@@ -1,9 +1,11 @@
 'use strict';
 
 const box = document.getElementById('box');
-const btn = document.getElementById('btn');
+const btnSort = document.getElementById('btnSort');
+const btnReset = document.getElementById('btnReset');
 
 function createItems() {
+  box.innerHTML = '';
   for (let i = 0; i < 20; i++) {
     let num = Math.ceil(Math.random() * 100);
     let item = document.createElement('div');
@@ -23,7 +25,7 @@ function swap(a, b) {
       box.insertBefore(b, a);
       res();
     }, 100);
-  })
+  });
 }
 
 async function bubbleSort() {
@@ -37,12 +39,14 @@ async function bubbleSort() {
       if (item1 > item2) {
         await swap(itemsArr[i], itemsArr[i + 1]);
       }
-      itemsArr[i].style.backgroundColor = 'gray';
-      itemsArr[i + 1].style.backgroundColor = 'gray';
+      itemsArr[i + 1].style.backgroundColor = 'green';
+      itemsArr[i].style.backgroundColor = 'red';
     }
   }
+  itemsArr[0].style.backgroundColor = 'green';
 }
 
 createItems();
 
-btn.addEventListener('click', bubbleSort);
+btnSort.addEventListener('click', bubbleSort);
+btnReset.addEventListener('click', createItems);
