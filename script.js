@@ -3,6 +3,8 @@
 const box = document.getElementById('box');
 const btnSort = document.getElementById('btnSort');
 const btnReset = document.getElementById('btnReset');
+const speed = document.getElementById('speed');
+let speedSetting = 100;
 
 function createItems() {
   box.innerHTML = '';
@@ -24,7 +26,7 @@ function swap(a, b) {
     setTimeout(() => {
       box.insertBefore(b, a);
       res();
-    }, 100);
+    }, speedSetting);
   });
 }
 
@@ -50,3 +52,7 @@ createItems();
 
 btnSort.addEventListener('click', bubbleSort);
 btnReset.addEventListener('click', createItems);
+
+speed.addEventListener('change', () => {
+  speedSetting = speed.value;
+});
