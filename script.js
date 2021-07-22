@@ -5,6 +5,9 @@ const btnSort = document.getElementById('btnSort');
 const btnReset = document.getElementById('btnReset');
 const speed = document.getElementById('speed');
 let speedSetting = 100;
+const green = '#51ac5d';
+const orange = '#d6b14b';
+const red = '#e44141de';
 
 function createItems() {
   box.innerHTML = '';
@@ -34,18 +37,18 @@ async function bubbleSort() {
   let itemsArr = box.children;
   for (let lastElem = itemsArr.length - 1; lastElem > 0; lastElem--) {
     for (let i = 0; i < lastElem; i++) {
-      itemsArr[i].style.backgroundColor = 'orange';
-      itemsArr[i + 1].style.backgroundColor = 'orange';
+      itemsArr[i].style.backgroundColor = orange;
+      itemsArr[i + 1].style.backgroundColor = orange;
       let item1 = Number(itemsArr[i].childNodes[0].innerText);
       let item2 = Number(itemsArr[i + 1].childNodes[0].innerText);
       if (item1 > item2) {
         await swap(itemsArr[i], itemsArr[i + 1]);
       }
-      itemsArr[i + 1].style.backgroundColor = 'green';
-      itemsArr[i].style.backgroundColor = 'red';
+      itemsArr[i + 1].style.backgroundColor = green;
+      itemsArr[i].style.backgroundColor = red;
     }
   }
-  itemsArr[0].style.backgroundColor = 'green';
+  itemsArr[0].style.backgroundColor = green;
 }
 
 createItems();
